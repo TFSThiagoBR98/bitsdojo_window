@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:ffi' as ffi;
 import 'package:flutter/painting.dart' show Alignment, Offset, Rect, Size;
 
 import 'package:ffi/ffi.dart';
@@ -22,7 +22,7 @@ bool isValidHandle(int? handle, String operation) {
 
 Rect getScreenRectForWindow(int handle) {
   int monitor = MonitorFromWindow(handle, MONITOR_DEFAULTTONEAREST);
-  final monitorInfo = calloc<MONITORINFO>()..ref.cbSize = sizeOf<MONITORINFO>();
+  final monitorInfo = calloc<MONITORINFO>()..ref.cbSize = ffi.sizeOf<MONITORINFO>();
   final result = GetMonitorInfo(monitor, monitorInfo);
   if (result == TRUE) {
     return Rect.fromLTRB(monitorInfo.ref.rcWork.left.toDouble(), monitorInfo.ref.rcWork.top.toDouble(),

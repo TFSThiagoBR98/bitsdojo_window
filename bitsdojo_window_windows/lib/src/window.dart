@@ -1,6 +1,5 @@
 import 'dart:ffi';
-import 'dart:ui' show Offset, Rect, Size;
-import 'package:flutter/painting.dart';
+import 'package:flutter/painting.dart' show Alignment, Offset, Rect, Size;
 
 import 'package:ffi/ffi.dart';
 import 'package:win32/win32.dart';

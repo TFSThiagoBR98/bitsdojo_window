@@ -1,7 +1,7 @@
 library bitsdojo_window_macos;
 
 import 'dart:ffi';
-import 'dart:ui' show Offset;
+import 'dart:ui' as ui show Offset;
 import 'package:ffi/ffi.dart';
 import './native_struct.dart';
 
@@ -77,7 +77,7 @@ typedef Int8 TSetPositionForWindow(IntPtr window, Pointer<BDWOffset> rect);
 typedef DSetPositionForWindow = int Function(int window, Pointer<BDWOffset> rect);
 final DSetPositionForWindow setPositionForWindowNative = _publicAPI.ref.setPositionForWindow.asFunction();
 
-bool setPositionForWindow(int window, Offset offset) {
+bool setPositionForWindow(int window, ui.Offset offset) {
   final Pointer<BDWOffset> offsetPointer = newBDWOffset();
   offsetPointer.ref
     ..x = offset.dx

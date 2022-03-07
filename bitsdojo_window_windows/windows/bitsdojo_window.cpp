@@ -256,6 +256,10 @@ void adjustMaximizedRects(HWND window, NCCALCSIZE_PARAMS* params) {
 }
 
 LRESULT handle_nccalcsize(HWND window, WPARAM wparam, LPARAM lparam) {
+  if (!wparam)
+  {
+      return 0;
+  }
   auto params = reinterpret_cast<NCCALCSIZE_PARAMS*>(lparam);
   if (params->lppos) adjustMaximizedSize(window, params->lppos);
   adjustMaximizedRects(window, params);
